@@ -1,29 +1,25 @@
 const expect = require('chai').expect;
-const weekday  = require('./functions.js');
+const weekday = require('./functions.js');
 
-// need some it shoulds and expects to thoroughly test
-// the day getting function- each day tested
 describe('weekday', function () {
-console.log(typeof weekday);
-  it('should return Sun when given this Sunday\'s date', function () {
+  it('should return correct abbreviation when given a date', function () {
     expect(weekday(new Date(2017, 9, 15))).to.eql('Sun');
-  //  expect(the function answer).to.eql.etc('Sun')
-  // use chai assertion library/doc to find comparisons u need
-  //  optionalDone();
+    expect(weekday(new Date(1955, 10, 5))).to.eql('Sat');
+  //  creates a new date passes into weekday, expects it to return a string 'Sun'
+  // testing that valid input gets correct output
   });
-  it('should throw an error when passed something other than a Date', function (done) {
-    expect(() => weekday('This string is no date.')).to.throw();
-    done();
+  it('should throw an TypeError when passed something other than a Date', function () {
+    expect(() => weekday('This string is no date.')).to.throw(TypeError);
+    expect(() => weekday(1234)).to.throw(TypeError);
   });
-  // Write a function weekday(date) to find the weekday for a given Date object,
-  // returing either 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', or 'Sun'.
-  //
+  // Uses callback because otherwise will throw error while calling the function
+  // in param field and won't correctly test. expect(weekday(invalidInput)).to.throw();
+  // throws an uncaught error and exits testing.
   //
   //   10: A test using expected/valid inputs for the weekday() function is written in tests.js.
   //   10: A test using unexpected/invalid inputs for the weekday() function is written in tests.js.
   //   30: Correct implementation of the weekday() is defined in functions.js.
   //   10: Tests for weekday() are passing.
-
 });
 
 describe('snippet', function () {
