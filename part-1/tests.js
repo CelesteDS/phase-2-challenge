@@ -11,8 +11,9 @@ console.log(typeof weekday);
   // use chai assertion library/doc to find comparisons u need
   //  optionalDone();
   });
-  it('should throw an error when passed something other than a Date', function () {
-    expect(weekday('this string is no date')).to.throw();
+  it('should throw an error when passed something other than a Date', function (done) {
+    expect(() => weekday('This string is no date.')).to.throw();
+    done();
   });
   // Write a function weekday(date) to find the weekday for a given Date object,
   // returing either 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', or 'Sun'.

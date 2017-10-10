@@ -1,4 +1,8 @@
-const weekday = function weekday(date) {
+const weekday = (date) => {
+  // make sure a Date obj is what's passed in
+  if (!(date instanceof Date)) {
+    throw new TypeError('Must pass a valid Date');
+  }
   // use getDay() method and switch statement to return appropriate day abbreviation
   switch (date.getDay()) {
     // getDay() is a Date prototype function that returns 0-6 where 0 is sunday
@@ -19,6 +23,6 @@ const weekday = function weekday(date) {
     default:
       throw new Error();
   }
-}
+};
 
 module.exports = weekday;
