@@ -23,6 +23,26 @@ describe('weekday', function () {
 });
 
 describe('snippet', function () {
+  // With valid input, these tests should work
+  it('should return strings shorter than maxlength unchanged', function () {
+    expect(snippet('Test 1', 10)).to.eql('Test 1');
+  });
+  it('should return strings shortened', function () {
+    expect(snippet('0123456789', 4).length).to.eql(7);
+  });
+  it('should add ellipsis to the end of a shortened string', function () {
+    expect(snippet('Test 3', 4)).to.eql('Test...');
+  });
+  // With invalid input, these tests should throw errors
+  it('should throw an error if 2nd parameter is not a number', function () {
+    expect(function () { snippet('Test 4', 'string,not a number'); }).to.throw(TypeError);
+  });
+  it('should throw an error if 1st parameter is not a string', function () {
+    expect(function () { snippet(true, 5); }).to.throw(TypeError);
+  });
+  it('should throw an error if the maxlength is less than 0', function () {
+    expect(function () { snippet('Test 6', -5); }).to.throw(RangeError);
+  });
 // Write a function snippet(string, maxlength) that shortens the string given to
 // the maxlength and adds the ellipsis character ("…") to the end of string, and
 // then returns the shortened string. If the string is shorter than the maxlength,
