@@ -1,4 +1,4 @@
-function weekday(date) {
+const weekday = function weekday(date) {
   // use getDay() method and switch statement to return appropriate day abbreviation
   switch (date.getDay()) {
     // getDay() is a Date prototype function that returns 0-6 where 0 is sunday
