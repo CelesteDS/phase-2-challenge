@@ -8,6 +8,7 @@ describe('weekday', function () {
   //  creates a new date passes into weekday, expects it to return a string 'Sun'
   // testing that valid input gets correct output
   });
+  // With invalid input, these tests should throw errors
   it('should throw an TypeError when passed something other than a Date', function () {
     expect(() => weekday('This string is no date.')).to.throw(TypeError);
     expect(() => weekday(1234)).to.throw(TypeError);
@@ -54,6 +55,15 @@ describe('snippet', function () {
 });
 
 describe('numProps', function () {
+  it('should return the right number of properties', function () {
+    expect(numProps( { 1:'one', 2:'two', 3:'three' } )).to.eql(3);
+  });
+  it('should return zero if the object passed is empty', function () {
+    expect(numProps( { } )).to.eql(0);
+  });
+  it('should throw an error if not passed anything', function () {
+    expect(() => numProps()).to.throw(ReferenceError);
+  });
 //   Write a function numProps(obj) that returns the number of properties an object
 //   has. Ignore symbolic properties and count only the "own properties" (not
 //     inherited) of the object.
