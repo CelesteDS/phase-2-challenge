@@ -42,4 +42,11 @@ const snippet = (string, maxLength) => {
   }
 };
 
-module.exports = { weekday, snippet };
+const numProps = (obj) => {
+  if(obj === null || obj === undefined){
+    throw new ReferenceError('You must pass an object.');
+  } else {
+    return Object.getOwnPropertyNames(obj).length;
+  }
+};
+module.exports = { weekday, snippet, numProps };
