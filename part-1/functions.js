@@ -28,4 +28,18 @@ const weekday = (date) => {
   }
 };
 
-module.exports = weekday;
+const snippet = (string, maxLength) => {
+  if (typeof maxLength !== 'number') {
+    throw new TypeError(`Expected a number. Got a ${typeof maxLength}.`);
+  } else if (typeof string !== 'string') {
+    throw new TypeError(`Expected a string. Got a ${typeof string}.`);
+  } else if (maxLength < 0) {
+    throw new RangeError('Length cannot be less than 0.');
+  } else if (string.length <= maxLength) {
+    return string;
+  } else {
+    return `${string.substring(0, maxLength)}...`;
+  }
+};
+
+module.exports = { weekday, snippet };
