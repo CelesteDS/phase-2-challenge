@@ -2,3 +2,8 @@ body{
   text-align: center;
   background-color: #EEd3f3;
 }
+
+#header{
+  display: flex;
+  justify-content: space-between;
+}
