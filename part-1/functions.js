@@ -43,10 +43,24 @@ const snippet = (string, maxLength) => {
 };
 
 const numProps = (obj) => {
-  if(obj === null || obj === undefined){
+  if (obj === (null || undefined)) {
     throw new ReferenceError('You must pass an object.');
   } else {
     return Object.getOwnPropertyNames(obj).length;
   }
 };
-module.exports = { weekday, snippet, numProps };
+
+const filterBetween = (arr, min, max) => {
+  if (typeof min !== 'number' || typeof max !== 'number') {
+    throw new TypeError('Expected number.');
+  } else if (!(arr instanceof Array)) {
+    throw new TypeError('Expected array.');
+  } else if (min < 0 || max < 0 || max < min) {
+    throw new RangeError('Min and max must both be 0 or more. Max must be greater or equal to min.');
+  } else {
+    arr.forEach( element => { if (typeof element !== 'number') throw new TypeError('XP');});
+    var toReturn = arr.filter( element => element >= min && element <= max);
+  }
+  return toReturn;
+};
+module.exports = { weekday, snippet, numProps, filterBetween };
