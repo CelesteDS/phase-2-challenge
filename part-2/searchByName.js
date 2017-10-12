@@ -5,11 +5,14 @@ const fs = require('fs');
 const input = process.argv.slice(2).join(' ');
 const filename = './clients.json';
 const clients = JSON.parse(fs.readFileSync(filename));
-// const arrayToPrint
+let startedPrinting = false;
 
-console.log(`Finding clients with name "${input}"...`);
+console.log(`Finding clients with name "${input}"...\n[{`);
 clients.forEach((element) => {
   if (element.rep_name.toLowerCase().startsWith(input.toLowerCase())) {
-    console.log(`"id": "${element.id}",\n"rep_name": "${element.rep_name}"`);
+    if (startedPrinting) console.log('},\n{');
+    startedPrinting = true;
+    console.log(`  "id": "${element.id}",\n  "rep_name": "${element.rep_name}"`);
   }
 });
+console.log('}]');
