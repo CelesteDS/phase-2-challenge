@@ -64,7 +64,7 @@
       command-t    
 
     What files or folders do you want all git repositories to ignore?
-      When using Node, you always want to ignore node_modules/
+      *.log files and when using Node, you always want to ignore node_modules/ 
 
     What is the main difference between == and === in JavaScript?
       == attempts to do type conversion if the elements are not the same type and then compares the two
