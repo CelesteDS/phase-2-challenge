@@ -1,3 +1,8 @@
+/**
+*function weekday
+*@param date: a Date object
+*@returns string representing day of week
+*/
 const weekday = (date) => {
   // make sure a Date obj is what's passed in
   if (!(date instanceof Date)) {
@@ -51,6 +56,7 @@ const numProps = (obj) => {
 };
 
 const filterBetween = (arr, min, max) => {
+  let toReturn;
   if (typeof min !== 'number' || typeof max !== 'number') {
     throw new TypeError('Expected number.');
   } else if (!(arr instanceof Array)) {
@@ -58,8 +64,8 @@ const filterBetween = (arr, min, max) => {
   } else if (min < 0 || max < 0 || max < min) {
     throw new RangeError('Min and max must both be 0 or more. Max must be greater or equal to min.');
   } else {
-    arr.forEach( element => { if (typeof element !== 'number') throw new TypeError('XP');});
-    var toReturn = arr.filter( element => element >= min && element <= max);
+    arr.forEach((element) => { if (typeof element !== 'number') throw new TypeError('XP'); });
+    toReturn = arr.filter(element => element >= min && element <= max);
   }
   return toReturn;
 };
